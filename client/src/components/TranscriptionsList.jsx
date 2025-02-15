@@ -3,13 +3,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
+
+const API_BASE_URL = import.meta.env.MY_PROJECT_URL || "http://localhost:3000";
+
 const TranscriptionsList = () => {
   const [transcriptions, setTranscriptions] = useState([]);
 
   useEffect(() => {
     const fetchTranscriptions = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/transcriptions");
+        
+        //const response = await axios.get("http://localhost:3000/transcriptions");
+        const response = await axios.get(`${API_BASE_URL}/transcriptions`);
         setTranscriptions(response.data);
       } catch (error) {
         console.error("Error fetching transcriptions:", error);

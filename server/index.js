@@ -11,7 +11,14 @@ const { createClient } = require('@supabase/supabase-js');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+//app.use(cors());
+
+app.use(cors({
+    origin: "http://localhost:5173",  // Replace with your frontend URL in production
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  }));
+  
 app.use(express.json());
 
 const upload = multer({ dest: "uploads/" });

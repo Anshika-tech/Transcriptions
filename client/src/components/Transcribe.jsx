@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Upload, Mic, Square } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.MY_PROJECT_URL|| "http://localhost:3000";
+
 const MediaUploadUI = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [transcriptions, setTranscriptions] = useState([]);
@@ -25,7 +27,10 @@ const MediaUploadUI = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post('http://localhost:3000/transcribe', formData, {
+      // const response = await axios.post('http://localhost:3000/transcribe', formData, {
+      //   headers: { 'Content-Type': 'multipart/form-data' },
+      // });
+      const response = await axios.post(`${API_BASE_URL}/transcribe`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
