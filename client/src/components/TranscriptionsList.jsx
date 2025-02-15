@@ -4,7 +4,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 
 
-const API_BASE_URL = import.meta.env.MY_PROJECT_URL || "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const TranscriptionsList = () => {
   const [transcriptions, setTranscriptions] = useState([]);

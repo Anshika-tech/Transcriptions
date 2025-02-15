@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Upload, Mic, Square } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.MY_PROJECT_URL|| "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_URL|| "http://localhost:3000";
 
 const MediaUploadUI = () => {
   const [isRecording, setIsRecording] = useState(false);
