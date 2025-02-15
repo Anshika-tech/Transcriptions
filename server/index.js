@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 //app.use(cors());
 
 app.use(cors({
-    origin: "*",  // Replace with your frontend URL in production
+    origin: "https://transcriptions-speech1.onrender.com",  // Replace with your frontend URL in production
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"]
   }));
