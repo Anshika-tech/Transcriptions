@@ -8,10 +8,10 @@ const fs = require('fs');
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-//app.use(cors());
 
 app.use(cors({
     origin: "https://transcriptions-speech1.onrender.com",  // Replace with your frontend URL in production
@@ -19,11 +19,14 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
   }));
   
+
+  
 app.use(express.json());
 
 const upload = multer({ dest: "uploads/" });
 
 const DEEPINFRA_API_URL = 'https://api.deepinfra.com/v1/openai/audio/transcriptions';
+//const DEEPINFRA_API_URL='https://api.deepgram.com/v1/listen?language=en&model=nova-2'
 const API_KEY = process.env.DEEPINFRA_API_KEY;
 
 
@@ -84,7 +87,9 @@ app.get('/transcriptions', async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-    return res.json("hi i am live yo");
+    return res.json("Backend is running");
 });
 
+
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+
