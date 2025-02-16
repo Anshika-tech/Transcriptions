@@ -19,17 +19,13 @@ const MediaUploadUI = () => {
     }
   };
   
-
+//Upload files to Backend
   const uploadToBackend = async (file) => {
     setLoading(true);
     setError('');
     try {
       const formData = new FormData();
       formData.append('file', file);
-
-      // const response = await axios.post('http://localhost:3000/transcribe', formData, {
-      //   headers: { 'Content-Type': 'multipart/form-data' },
-      // });
       const response = await axios.post(`${API_BASE_URL}/transcribe`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
@@ -45,6 +41,7 @@ const MediaUploadUI = () => {
     }
   };
 
+  //Start Recording button
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -72,7 +69,7 @@ const MediaUploadUI = () => {
       setError('Microphone access denied: Please enable microphone permissions');
     }
   };
-
+//Stop Recording button
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();

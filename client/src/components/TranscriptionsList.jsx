@@ -6,13 +6,14 @@ import { motion } from "framer-motion";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
+// Fetch Transcriptions
 const TranscriptionsList = () => {
   const [transcriptions, setTranscriptions] = useState([]);
 
   useEffect(() => {
     const fetchTranscriptions = async () => {
       try {
-        
+        console.log("API URL:", API_BASE_URL);
         //const response = await axios.get("http://localhost:3000/transcriptions");
         const response = await axios.get(`${API_BASE_URL}/transcriptions`);
         setTranscriptions(response.data);
